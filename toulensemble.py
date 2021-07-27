@@ -43,8 +43,8 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-#dh=df.head(200)
-data=df.values.tolist()
+dh=df.head(5000)
+data=dh.values.tolist()
 
 data_int=[]
 for i in range(len(data)):
