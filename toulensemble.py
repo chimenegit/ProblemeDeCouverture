@@ -370,11 +370,7 @@ finally:
                   #for i in Dataframe_liste1:
                   #Dataframe_liste=Dataframe_liste1.values.tolist()
                        #print(DataFrame_liste1.values.tolist())
-
-
-
-      # In[ ]:
-
+               
 
       # RECUPERATION D'ELEMENT COUVERT
 
@@ -487,22 +483,7 @@ finally:
 
           return(ListNonCouv)
 
-
       #print(RenvoiEltCouvert(datas12))
-
-
-
-
-      # In[ ]:
-
-
-      for i in cluster_list:
-          for j in i:
-              print("HUUUU:",j)
-
-
-      # In[ ]:
-
 
       # FONCTIONS D'AJOUT(ADCOV), IDGC, IDSA
 
@@ -848,39 +829,6 @@ finally:
           for j in i:
                   list_de_AjoutEList.append(j)
       print("I_Ajout:",len(list_de_AjoutEList))
-
-
-
-      compteIDGC=0
-      for i in range(len(list_de_clusterList)):
-          for j in range(len(list_de_IDGC)):
-              if (i==j and list_de_clusterList[i]!=list_de_IDGC[j]):
-                  compteIDGC=compteIDGC +1
-      print(len(list_de_IDGC))
-      print("Im_IDGC:",compteIDGC)
-
-      compteE=0
-      for i in range(len(list_de_clusterList)):
-          for j in range(len(list_de_AjoutEList)):
-              if (i==j and list_de_clusterList[i]!=list_de_AjoutEList[j]):
-                  compteE=compteE +1
-      print("Im_Ajout:",compteE)
-
-      compter=0
-      for i in range(len(list_de_clusterList)):
-          for j in range(len(list_de_AjoutIList)):
-              if (i==j and list_de_clusterList[i]!=list_de_AjoutIList[j]):
-                  compter=compter +1
-      print("Im_IDSA:",compter)
-
-
-      # In[ ]:
-
-
-
-
-
-      # In[ ]:
 
 
       # CODES POUR LE CALCUL DE RAE
