@@ -43,8 +43,8 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-#dh=df.head(6000)
-data=df.values.tolist()
+dh=df.head(6000)
+data=dh.values.tolist()
 
 data_int=[]
 for i in range(len(data)):
@@ -807,11 +807,11 @@ finally:
       compteJou=list_coupledatJou.count(Couple_Essai)
       print(compteDi, compteJou)
 
-      import statistics
-      support=[compteDi,compteJou]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      print("re_Ajout:",re)
+      #import statistics
+      #support=[compteDi,compteJou]
+      #moyenne=statistics.mean(support)
+      #re=abs(support[1]-support[0])/moyenne
+      #print("re_Ajout:",re)
 
 
       # RAE_IDSA
@@ -833,11 +833,11 @@ finally:
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
       print(compteDi, compteIDSA)
 
-      import statistics
-      support=[compteDi,compteIDSA]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      print("re_IDSA:",re)
+      #import statistics
+      #support=[compteDi,compteIDSA]
+      #moyenne=statistics.mean(support)
+      #re=abs(support[1]-support[0])/moyenne
+      #print("re_IDSA:",re)
 
       # RAE_IDGC
       liste4=[]   
@@ -857,10 +857,10 @@ finally:
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
       print(compteIDGC, compteDi)
 
-      import statistics
-      support=[compteDi,compteIDGC]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
+      #import statistics
+      #support=[compteDi,compteIDGC]
+      #moyenne=statistics.mean(support)
+      #re=abs(support[1]-support[0])/moyenne
       print("re_IDGC:",re)
 
 
