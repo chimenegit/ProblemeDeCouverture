@@ -43,8 +43,8 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.head(6000)
-data=dh.values.tolist()
+#dh=df.head(6000)
+data=df.values.tolist()
 
 data_int=[]
 for i in range(len(data)):
@@ -861,7 +861,7 @@ finally:
       #support=[compteDi,compteIDGC]
       #moyenne=statistics.mean(support)
       #re=abs(support[1]-support[0])/moyenne
-      print("re_IDGC:",re)
+      #print("re_IDGC:",re)
 
 
 
