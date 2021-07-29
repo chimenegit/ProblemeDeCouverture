@@ -43,7 +43,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.head(6000)
+dh=df.loc[6001:12000]#head(6000)
 data=dh.values.tolist()
 
 data_int=[]
@@ -802,7 +802,7 @@ finally:
           for o in range(n+1, len(List_datJou)):
                       list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
 
-      Couple_Essai={12807, 12811}
+      Couple_Essai={10311, 33449}
       compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
       print(compteDi, compteJou)
@@ -828,7 +828,7 @@ finally:
                       list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
 
 
-      Couple_Essai={12807, 12811}
+      Couple_Essai={10311, 33449}
       compteDi=list_coupDi.count(Couple_Essai)
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
       print(compteDi, compteIDSA)
@@ -852,7 +852,7 @@ finally:
           for o in range(n+1, len(List_dat)):
                       list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
 
-      Couple_Essai={12807, 12811}
+      Couple_Essai={10311, 33449}
       compteDi=list_coupDi.count(Couple_Essai)
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
       print(compteIDGC, compteDi)
