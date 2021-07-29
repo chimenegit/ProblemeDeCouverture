@@ -807,11 +807,11 @@ finally:
       compteJou=list_coupledatJou.count(Couple_Essai)
       print(compteDi, compteJou)
 
-      #import statistics
-      #support=[compteDi,compteJou]
-      #moyenne=statistics.mean(support)
-      #re=abs(support[1]-support[0])/moyenne
-      #print("re_Ajout:",re)
+      import statistics
+      support=[compteDi,compteJou]
+      moyenne=statistics.mean(support)
+      re=abs(support[1]-support[0])/moyenne
+      print("re_Ajout:",re)
 
 
       # RAE_IDSA
@@ -834,10 +834,10 @@ finally:
       print(compteDi, compteIDSA)
 
       #import statistics
-      #support=[compteDi,compteIDSA]
-      #moyenne=statistics.mean(support)
-      #re=abs(support[1]-support[0])/moyenne
-      #print("re_IDSA:",re)
+      support=[compteDi,compteIDSA]
+      moyenne=statistics.mean(support)
+      re=abs(support[1]-support[0])/moyenne
+      print("re_IDSA:",re)
 
       # RAE_IDGC
       liste4=[]   
@@ -858,10 +858,10 @@ finally:
       print(compteIDGC, compteDi)
 
       #import statistics
-      #support=[compteDi,compteIDGC]
-      #moyenne=statistics.mean(support)
-      #re=abs(support[1]-support[0])/moyenne
-      #print("re_IDGC:",re)
+      support=[compteDi,compteIDGC]
+      moyenne=statistics.mean(support)
+      re=abs(support[1]-support[0])/moyenne
+      print("re_IDGC:",re)
 
 
 
