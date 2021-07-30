@@ -43,7 +43,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[42001:48000]#head(6000)
+dh=df.loc[48001:54000]#head(6000)
 data=dh.values.tolist()
 
 data_int=[]
