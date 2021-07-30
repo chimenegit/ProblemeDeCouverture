@@ -10,8 +10,8 @@ import operator
 import copy
 from pandas import DataFrame
 
-data_file = "BMSVIEW1 (1).txt"
-#data_file = "BMS2.txt"
+#data_file = "BMSVIEW1 (1).txt"
+data_file = "BMS2.txt"
 
 # Delimiter
 
@@ -43,8 +43,8 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[30001:36000]#head(6000)
-data=dh.values.tolist()
+#dh=df.loc[30001:36000]#head(6000)
+data=df.values.tolist()
 
 data_int=[]
 for i in range(len(data)):
@@ -720,7 +720,7 @@ compt1_Disso=0
 for a in clust_couvDisso:
     if len(a)!=0:
         compt1_Disso=compt1_Disso+1
-#print("Nbre_de_bloc_Non couvert_Dissociation :",compt1_Disso)
+print("Nbre_de_bloc_Non couvert_Dissociation :",compt1_Disso)
 
 clust_couvIDGC=[]
 for cluster in IDGCl:
@@ -733,7 +733,7 @@ compt1_IDGC=0
 for a in clust_couvIDGC:
     if len(a)!=0:
         compt1_IDGC=compt1_IDGC+1
-#print("Nbre_de_bloc_Non couvert_IDGC :",compt1_IDGC)
+print("Nbre_de_bloc_Non couvert_IDGC :",compt1_IDGC)
 
 
 Elt_couvAjout=[]
@@ -746,7 +746,7 @@ compt_Ajout=0
 for t in Elt_couvAjout:
     if len(t)!=0:
         compt_Ajout=compt_Ajout+1
-#print("Nbre_de_bloc_Non couvert_Ajout:",compt_Ajout)   
+print("Nbre_de_bloc_Non couvert_Ajout:",compt_Ajout)   
 
 Elt_couvIDSA=[]
 for d in AjoutI:
@@ -761,5 +761,5 @@ compt_IDSA=0
 for t in Elt_couvIDSA:
     #if len(t)!=0:
         compt_IDSA=compt_IDSA+1
-#print("Nbre_de_bloc_Non couvert_IDSA:",compt_IDSA)
+print("Nbre_de_bloc_Non couvert_IDSA:",compt_IDSA)
 
