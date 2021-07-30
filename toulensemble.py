@@ -759,6 +759,7 @@ finally:
                   list_de_AjoutIList.append(k)
       print("I_IDSA:",len(list_de_AjoutIList))
       
+      
       list_de_IDGC=[]
       for u in IDGCl:
           for v in u:
@@ -773,6 +774,22 @@ finally:
           for j in i:
                   list_de_AjoutEList.append(j)
       print("I_Ajout:",len(list_de_AjoutEList))
+
+
+      # CODES POUR LE CALCUL DE RAE
+
+      # Dissociation de base pour RAE
+      liste3=[]   
+      for p in range(len(list_de_clusterList)):
+          for q in range(len(list_de_clusterList[p])):
+              liste3.append(list_de_clusterList[p][q])
+      List_Di=liste3
+
+      list_coupDi=[]
+      for e in range(len(List_Di) - 1):
+          for f in range(e+1, len(List_Di)):
+                      list_coupDi.append(set([List_Di[e], List_Di[f]]))
+  
 # RAE_Ajout
 
       liste4_jou=[]   
@@ -822,37 +839,6 @@ finally:
       moyenne=statistics.mean(support)
       re=abs(support[1]-support[0])/moyenne
       print("re_IDSA:",re)
-      
-      list_de_IDGC=[]
-      for u in IDGCl:
-          for v in u:
-              for x in v:
-                  #print(x)
-                  list_de_IDGC.append(x)
-      print("I_IDGC:",len(list_de_IDGC))
-
-
-      list_de_AjoutEList=[]
-      for i in AjoutEN:
-          for j in i:
-                  list_de_AjoutEList.append(j)
-      print("I_Ajout:",len(list_de_AjoutEList))
-
-
-      # CODES POUR LE CALCUL DE RAE
-
-      # Dissociation de base pour RAE
-      liste3=[]   
-      for p in range(len(list_de_clusterList)):
-          for q in range(len(list_de_clusterList[p])):
-              liste3.append(list_de_clusterList[p][q])
-      List_Di=liste3
-
-      list_coupDi=[]
-      for e in range(len(List_Di) - 1):
-          for f in range(e+1, len(List_Di)):
-                      list_coupDi.append(set([List_Di[e], List_Di[f]]))
-
 
       # RAE_IDGC
       liste4=[]   
