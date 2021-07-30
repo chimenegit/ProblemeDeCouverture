@@ -758,6 +758,21 @@ finally:
               for k in j:
                   list_de_AjoutIList.append(k)
       print("I_IDSA:",len(list_de_AjoutIList))
+      
+      list_de_IDGC=[]
+      for u in IDGCl:
+          for v in u:
+              for x in v:
+                  #print(x)
+                  list_de_IDGC.append(x)
+      print("I_IDGC:",len(list_de_IDGC))
+
+
+      list_de_AjoutEList=[]
+      for i in AjoutEN:
+          for j in i:
+                  list_de_AjoutEList.append(j)
+      print("I_Ajout:",len(list_de_AjoutEList))
 # RAE_Ajout
 
       liste4_jou=[]   
