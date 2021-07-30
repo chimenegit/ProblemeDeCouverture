@@ -808,7 +808,7 @@ finally:
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
       print(compteIDGC, compteDi)
 
-      #import statistics
+      import statistics
       support=[compteDi,compteIDGC]
       moyenne=statistics.mean(support)
       re=abs(support[1]-support[0])/moyenne
