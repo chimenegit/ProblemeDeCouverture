@@ -43,7 +43,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[54001:59601]#head(6000)#
+dh=df.loc[18001:24000]#head(6000)#
 data=dh.values.tolist()
 
 data_int=[]
@@ -680,7 +680,7 @@ finally:
                                           #return
 
                                           for l in range(0, len(liste)):
-                                              if set(liste[l])!=set(enscouv): 
+                                              if set(liste[l])!=set(enscouv):
                                                   ##is_Sviolate=True
                                                   for p in Sviolate:
                                                       if p not in liste[l]:
@@ -802,7 +802,7 @@ finally:
           for o in range(n+1, len(List_datJou)):
                       list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
 
-      Couple_Essai={10315, 10307}
+      Couple_Essai={33449, 33453}
       compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
       print(compteDi, compteJou)
@@ -828,7 +828,7 @@ finally:
                       list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
 
 
-      Couple_Essai={10315, 10307}
+      Couple_Essai={33449, 33453}
       compteDi=list_coupDi.count(Couple_Essai)
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
       print(compteDi, compteIDSA)
@@ -852,7 +852,7 @@ finally:
           for o in range(n+1, len(List_dat)):
                       list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
 
-      Couple_Essai={10315, 10307}
+      Couple_Essai={33449, 33453}
       compteDi=list_coupDi.count(Couple_Essai)
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
       print(compteIDGC, compteDi)
