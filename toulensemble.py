@@ -791,7 +791,7 @@ finally:
                       list_coupDi.append(set([List_Di[e], List_Di[f]]))
   
 # RAE_Ajout
-       liste4_jou=[]   
+      liste4_jou=[]   
       for r in range(len(list_de_AjoutEList)):
           for s in range(len(list_de_AjoutEList[r])):
               liste4_jou.append(list_de_AjoutEList[r][s])
