@@ -150,7 +150,7 @@ def Horpat(D, ignore):
 
 # LA MAXIMALE DE CLUSTER CONSIDEREE
 
-MAX_CLUSTER_SIZE=50
+MAX_CLUSTER_SIZE=40
 
 ignore_set = set([])
 #data=dh.values.tolist()
