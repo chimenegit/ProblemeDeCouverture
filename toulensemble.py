@@ -323,7 +323,7 @@ finally:
               return(pd.DataFrame(chunk))
 
       # On suppose que l'Algorithme de construction de Tremain effectué
-      k=3
+      k=4
       cluster_list= []
       for liste in data_partition_horizontale:
 
