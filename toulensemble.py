@@ -730,7 +730,7 @@ finally:
       #start_time = time.time()
       for cluster in cluster_list_IDSA:
           #for bloc in cluster:
-              AjoutI_bloc=IDSA3(cluster, 3)
+              AjoutI_bloc=IDSA3(cluster, k)
               AjoutI.append(AjoutI_bloc)
       #print("\n\nTemps d execution : %s secondes ---" % (time.time() - start_time))
       #print(AjoutI)
@@ -749,7 +749,7 @@ finally:
       for a in clust_couvDisso:
           if len(a)!=0:
               compt1_Disso=compt1_Disso+1
-      #print("Nbre_de_bloc_Non couvert_Dissociation :",compt1_Disso)
+      print("Nbre_de_bloc_Non couvert_Dissociation :",compt1_Disso)
 
       clust_couvIDGC=[]
       for cluster in IDGCl:
