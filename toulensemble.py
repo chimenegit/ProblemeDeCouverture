@@ -43,8 +43,8 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[54001:59601]#head(5000)#
-data=dh.values.tolist()
+#dh=df.loc[54001:59601]#head(5000)#
+data=df.values.tolist()
 
 data_int=[]
 for i in range(len(data)):
@@ -150,7 +150,7 @@ def Horpat(D, ignore):
 
 # LA MAXIMALE DE CLUSTER CONSIDEREE
 
-MAX_CLUSTER_SIZE=40
+MAX_CLUSTER_SIZE=20
 
 ignore_set = set([])
 #data=dh.values.tolist()
@@ -323,7 +323,7 @@ finally:
               return(pd.DataFrame(chunk))
 
       # On suppose que l'Algorithme de construction de Tremain effectué
-      k=3
+      k=2
       cluster_list= []
       for liste in data_partition_horizontale:
 
@@ -737,134 +737,65 @@ finally:
 
 
       #NOMBRE DE BLOCS COUVERTS ET LISTE DES TERMES AJOUT, IDGC, IDSA
+      clust_couvDisso=[]
+      for cluster in cluster_list_Disso:
+          for bloc in cluster:
+              Renv=RenvoiEltCouvert(bloc)
+              #print(Renv)
+              clust_couvDisso.append(Renv)
+
+
+      compt1_Disso=0
+      for a in clust_couvDisso:
+          if len(a)!=0:
+              compt1_Disso=compt1_Disso+1
+      #print("Nbre_de_bloc_Non couvert_Dissociation :",compt1_Disso)
+
+      clust_couvIDGC=[]
+      for cluster in IDGCl:
+          for bloc in cluster:
+              Renv_IDGC=RenvoiEltCouvert(bloc)
+              #print(Renv)
+              clust_couvIDGC.append(Renv_IDGC)
+
+      compt1_IDGC=0
+      for a in clust_couvIDGC:
+          if len(a)!=0:
+              compt1_IDGC=compt1_IDGC+1
+      print("Nbre_de_bloc_Non couvert_IDGC :",compt1_IDGC)
+
+
+      Elt_couvAjout=[]
+      for d in AjoutEN:
+          Elt=RenvoiEltCouvert(d)
+          Elt_couvAjout.append(Elt)
+      #print(Elt_couv)
+
+      compt_Ajout=0
+      for t in Elt_couvAjout:
+          if len(t)!=0:
+              compt_Ajout=compt_Ajout+1
+      print("Nbre_de_bloc_Non couvert_Ajout:",compt_Ajout)   
+
+      Elt_couvIDSA=[]
+      for d in AjoutI:
+          for de in d:
+              if RenvoiEltCouvert(de)!= [0] and len(RenvoiEltCouvert(de))!= 0:
+                  Elt=RenvoiEltCouvert(de)
+                  #print(de)
+                  Elt_couvIDSA.append(Elt)
+      #print(Elt_couv)
+
+      compt_IDSA=0
+      for t in Elt_couvIDSA:
+          #if len(t)!=0:
+              compt_IDSA=compt_IDSA+1
+      print("Nbre_de_bloc_Non couvert_IDSA:",compt_IDSA)
+
 
       # In[ ]:
 
-
-      # CODES POUR LE CALCUL DE FMI (AJOUT, IDGC, IDSA)
-
-      #LISTE DES TERMES AJOUT, IDGC, IDSA
-
-      list_de_clusterList=[]
-      for i in cluster_list_Disso:
-          for j in i:
-              for k in j:
-                  list_de_clusterList.append(k)
-      print("I_disso:",len(list_de_clusterList))
-
-      list_de_AjoutIList=[]
-      for i in AjoutI:
-          for j in i:
-              for k in j:
-                  list_de_AjoutIList.append(k)
-      print("I_IDSA:",len(list_de_AjoutIList))
-      
-      
-      list_de_IDGC=[]
-      for u in IDGCl:
-          for v in u:
-              for x in v:
-                  #print(x)
-                  list_de_IDGC.append(x)
-      print("I_IDGC:",len(list_de_IDGC))
-
-
-      list_de_AjoutEList=[]
-      for i in AjoutEN:
-          for j in i:
-                  list_de_AjoutEList.append(j)
-      print("I_Ajout:",len(list_de_AjoutEList))
-
-
-      # CODES POUR LE CALCUL DE RAE
-
-      # Dissociation de base pour RAE
-      liste3=[]   
-      for p in range(len(list_de_clusterList)):
-          for q in range(len(list_de_clusterList[p])):
-              liste3.append(list_de_clusterList[p][q])
-      List_Di=liste3
-
-      list_coupDi=[]
-      for e in range(len(List_Di) - 1):
-          for f in range(e+1, len(List_Di)):
-                      list_coupDi.append(set([List_Di[e], List_Di[f]]))
-  
-# RAE_Ajout
-      liste4_jou=[]   
-      for r in range(len(list_de_AjoutEList)):
-          for s in range(len(list_de_AjoutEList[r])):
-              liste4_jou.append(list_de_AjoutEList[r][s])
-      List_datJou=liste4_jou
-
-      list_coupledatJou=[]
-      for n in range(len(List_datJou) - 1):
-          for o in range(n+1, len(List_datJou)):
-                      list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
-
-      Couple_Essai={12703, 10315}
-      compteDi=list_coupDi.count(Couple_Essai)
-      compteJou=list_coupledatJou.count(Couple_Essai)
-      print(compteDi, compteJou)
-
-      import statistics
-      support=[compteDi,compteJou]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      print("re_Ajout:",re)
-
-
-      # RAE_IDSA
-
-      liste4_IDSA=[]   
-      for r in range(len(list_de_AjoutIList)):
-          for s in range(len(list_de_AjoutIList[r])):
-              liste4_IDSA.append(list_de_AjoutIList[r][s])
-      List_datIDSA=liste4_IDSA
-
-      list_coupledatIDSA=[]
-      for n in range(len(List_datIDSA) - 1):
-          for o in range(n+1, len(List_datIDSA)):
-                      list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
-
-
-      Couple_Essai={12703, 10315}
-      compteDi=list_coupDi.count(Couple_Essai)
-      compteIDSA=list_coupledatIDSA.count(Couple_Essai)
-      print(compteDi, compteIDSA)
-
-      #import statistics
-      support=[compteDi,compteIDSA]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      print("re_IDSA:",re)
-   
-      # RAE_IDGC
-      liste4=[]   
-      for r in range(len(list_de_IDGC)):
-          for s in range(len(list_de_IDGC[r])):
-              liste4.append(list_de_IDGC[r][s])
-      List_dat=liste4
-
-
-      list_coupleIDGC=[]
-      for n in range(len(List_dat) - 1):
-          for o in range(n+1, len(List_dat)):
-                      list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
-
-      Couple_Essai={12703, 10315}
-      compteDi=list_coupDi.count(Couple_Essai)
-      compteIDGC=list_coupleIDGC.count(Couple_Essai)
-      print(compteIDGC, compteDi)
-
-      import statistics
-      support=[compteDi,compteIDGC]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      print("re_IDGC:",re)
-
-
-
+    # la place de FMI, RAE
 
       # In[ ]:
 
