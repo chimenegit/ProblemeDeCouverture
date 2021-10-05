@@ -150,7 +150,7 @@ def Horpat(D, ignore):
 
 # LA MAXIMALE DE CLUSTER CONSIDEREE
 
-MAX_CLUSTER_SIZE=20
+MAX_CLUSTER_SIZE=50
 
 ignore_set = set([])
 #data=dh.values.tolist()
@@ -323,7 +323,7 @@ finally:
               return(pd.DataFrame(chunk))
 
       # On suppose que l'Algorithme de construction de Tremain effectué
-      k=5
+      k=2
       cluster_list= []
       for liste in data_partition_horizontale:
 
