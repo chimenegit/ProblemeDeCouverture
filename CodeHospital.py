@@ -11,7 +11,7 @@ import copy
 from pandas import DataFrame
 
 df = pd.read_csv("hospital0304.csv")
-dh=df.head(15000)#loc[10000:15000]
+dh=df.head(1000)#loc[10000:15000]
 data1=dh.values.tolist()
 #print(data1)
 
