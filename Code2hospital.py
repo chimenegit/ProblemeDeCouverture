@@ -684,94 +684,94 @@ def IDSA3(Disassociated_data, k):
 
 
  #APPEL DES FONCTIONS
-      cluster_list_IDSA=copy.deepcopy(cluster_list)
-      cluster_list_Ajout=copy.deepcopy(cluster_list)
-      cluster_lis=copy.deepcopy(cluster_list)
-      cluster_list_Disso=copy.deepcopy(cluster_list)
+  cluster_list_IDSA=copy.deepcopy(cluster_list)
+  cluster_list_Ajout=copy.deepcopy(cluster_list)
+  cluster_lis=copy.deepcopy(cluster_list)
+  cluster_list_Disso=copy.deepcopy(cluster_list)
 
-      IDGCl=IDGC(cluster_lis)
-    
-      import time
-      start_time = time.time()
-      AjoutEN=[]
-      for cluster in cluster_list_Ajout:
-          for bloc in cluster:
-              #start_time = time.time()
-              AjoutEN.append(AjoutEltN(bloc))
-      print("\n\nTemps d execution : %s secondes ---" % (time.time() - start_time))
+  IDGCl=IDGC(cluster_lis)
 
-      AjoutI=[]
-      start_time = time.time()
-      for cluster in cluster_list_IDSA:
-          #for bloc in cluster:
-              AjoutI_bloc=IDSA3(cluster, k)
-              AjoutI.append(AjoutI_bloc)
-      print("\n\nTemps d execution : %s secondes ---" % (time.time() - start_time))
-      #print(AjoutI)
+  import time
+  start_time = time.time()
+  AjoutEN=[]
+  for cluster in cluster_list_Ajout:
+      for bloc in cluster:
+          #start_time = time.time()
+          AjoutEN.append(AjoutEltN(bloc))
+  print("\n\nTemps d execution : %s secondes ---" % (time.time() - start_time))
 
-
-      #NOMBRE DE BLOCS COUVERTS ET LISTE DES TERMES AJOUT, IDGC, IDSA
-      clust_couvDisso=[]
-      for cluster in cluster_list_Disso:
-          for bloc in cluster:
-              Renv=RenvoiEltCouvert(bloc)
-              #print(Renv)
-              clust_couvDisso.append(Renv)
+  AjoutI=[]
+  start_time = time.time()
+  for cluster in cluster_list_IDSA:
+      #for bloc in cluster:
+          AjoutI_bloc=IDSA3(cluster, k)
+          AjoutI.append(AjoutI_bloc)
+  print("\n\nTemps d execution : %s secondes ---" % (time.time() - start_time))
+  #print(AjoutI)
 
 
-      compt1_Disso=0
-      for a in clust_couvDisso:
-          if len(a)!=0:
-              compt1_Disso=compt1_Disso+1
-      print("Nbre_de_bloc_Non couvert_Dissociation :",compt1_Disso)
-
-      clust_couvIDGC=[]
-      for cluster in IDGCl:
-          for bloc in cluster:
-              Renv_IDGC=RenvoiEltCouvert(bloc)
-              #print(Renv)
-              clust_couvIDGC.append(Renv_IDGC)
-
-      compt1_IDGC=0
-      for a in clust_couvIDGC:
-          if len(a)!=0:
-              compt1_IDGC=compt1_IDGC+1
-      print("Nbre_de_bloc_Non couvert_IDGC :",compt1_IDGC)
+  #NOMBRE DE BLOCS COUVERTS ET LISTE DES TERMES AJOUT, IDGC, IDSA
+  clust_couvDisso=[]
+  for cluster in cluster_list_Disso:
+      for bloc in cluster:
+          Renv=RenvoiEltCouvert(bloc)
+          #print(Renv)
+          clust_couvDisso.append(Renv)
 
 
-      Elt_couvAjout=[]
-      for d in AjoutEN:
-          Elt=RenvoiEltCouvert(d)
-          Elt_couvAjout.append(Elt)
-      #print(Elt_couv)
+  compt1_Disso=0
+  for a in clust_couvDisso:
+      if len(a)!=0:
+          compt1_Disso=compt1_Disso+1
+  print("Nbre_de_bloc_Non couvert_Dissociation :",compt1_Disso)
 
-      compt_Ajout=0
-      for t in Elt_couvAjout:
-          if len(t)!=0:
-              compt_Ajout=compt_Ajout+1
-      print("Nbre_de_bloc_Non couvert_Ajout:",compt_Ajout)   
+  clust_couvIDGC=[]
+  for cluster in IDGCl:
+      for bloc in cluster:
+          Renv_IDGC=RenvoiEltCouvert(bloc)
+          #print(Renv)
+          clust_couvIDGC.append(Renv_IDGC)
 
-      Elt_couvIDSA=[]
-      for d in AjoutI:
-          for de in d:
-              if RenvoiEltCouvert(de)!= [0] and len(RenvoiEltCouvert(de))!= 0:
-                  Elt=RenvoiEltCouvert(de)
-                  #print(de)
-                  Elt_couvIDSA.append(Elt)
-      #print(Elt_couv)
-
-      compt_IDSA=0
-      for t in Elt_couvIDSA:
-          #if len(t)!=0:
-              compt_IDSA=compt_IDSA+1
-      print("Nbre_de_bloc_Non couvert_IDSA:",compt_IDSA)
+  compt1_IDGC=0
+  for a in clust_couvIDGC:
+      if len(a)!=0:
+          compt1_IDGC=compt1_IDGC+1
+  print("Nbre_de_bloc_Non couvert_IDGC :",compt1_IDGC)
 
 
-      # In[ ]:
+  Elt_couvAjout=[]
+  for d in AjoutEN:
+      Elt=RenvoiEltCouvert(d)
+      Elt_couvAjout.append(Elt)
+  #print(Elt_couv)
 
-    # la place de FMI, RAE
+  compt_Ajout=0
+  for t in Elt_couvAjout:
+      if len(t)!=0:
+          compt_Ajout=compt_Ajout+1
+  print("Nbre_de_bloc_Non couvert_Ajout:",compt_Ajout)   
 
-      # In[ ]:
+  Elt_couvIDSA=[]
+  for d in AjoutI:
+      for de in d:
+          if RenvoiEltCouvert(de)!= [0] and len(RenvoiEltCouvert(de))!= 0:
+              Elt=RenvoiEltCouvert(de)
+              #print(de)
+              Elt_couvIDSA.append(Elt)
+  #print(Elt_couv)
+
+  compt_IDSA=0
+  for t in Elt_couvIDSA:
+      #if len(t)!=0:
+          compt_IDSA=compt_IDSA+1
+  print("Nbre_de_bloc_Non couvert_IDSA:",compt_IDSA)
+
+
+  # In[ ]:
+
+# la place de FMI, RAE
+
+  # In[ ]:
 
 
 
