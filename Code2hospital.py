@@ -163,15 +163,17 @@ for i in range(len(l1)):
 #print(a)
 print(len(l1))
 
-
 # In[6]:
 
+try:
+    for i in range(len(l3)):
+        if len(l3[i])==len(l3):
+            l3.remove(l3[i])
+    #print(l3)
 
-for i in range(len(l3)):
-    if len(l3[i])==len(l3):
-        l3.remove(l3[i])
-#print(l3)
-
+except:
+    print("Survenue de l'exception inutile")
+finally:
 
 # In[7]:
 
