@@ -10,8 +10,8 @@ import operator
 import copy
 from pandas import DataFrame
 
-data_file = "BMSVIEW1 (1).txt"
-#data_file = "BMS2.txt"
+#data_file = "BMSVIEW1 (1).txt"
+data_file = "BMS2.txt"
 
 # Delimiter
 
