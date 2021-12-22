@@ -324,7 +324,7 @@ finally:
               return(pd.DataFrame(chunk))
 
       # On suppose que l'Algorithme de construction de Tremain effectué
-      k=2 # VARIATION DE K
+      k=3 # VARIATION DE K
       cluster_list= []
       for liste in data_partition_horizontale:
 
