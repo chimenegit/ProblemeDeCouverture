@@ -521,27 +521,27 @@ finally:
                           Disassociated_data=tempList    
                           trouve=True
                           break
-              if trouve==False:
+              #if trouve==False:
 
-                  Disassociated_data.append(eltcouv)
+                  #Disassociated_data.append(eltcouv)
 
           if len(eltcouv)>=2:
 
 
-                  if len(ListNonCouv)==0:
-                      if set(eltcouv)!=set(enscouv):
-                          liste.append(eltcouv)
-                      else:
+                  #if len(ListNonCouv)==0:
+                      #if set(eltcouv)!=set(enscouv):
+                          #liste.append(eltcouv)
+                      #else:
 
-                               liste.append(e1)
-                               liste.append(e2)
+                               #liste.append(e1)
+                               #liste.append(e2)
 
                   if len(ListNonCouv)==1:  
                       for i in range(0, len(liste)):
                           if set(liste[i])==set(ListNonCouv[0]):
 
                               liste[i].extend(e1)
-                              liste.append(e2)
+                              #liste.append(e2)
 
                   if len(ListNonCouv)>=2:
                       trouve2=False
@@ -797,6 +797,61 @@ finally:
       # In[ ]:
 
     # la place de FMI, RAE
+     # CODES POUR LE CALCUL DE FMI (AJOUT, IDGC, IDSA)
+
+      #LISTE DES TERMES AJOUT, IDGC, IDSA
+
+      list_de_clusterList=[]
+      for i in cluster_list_Disso:
+          for j in i:
+              for k in j:
+                  list_de_clusterList.append(k)
+      print("I_disso:",len(list_de_clusterList))
+
+      list_de_AjoutIList=[]
+      for i in AjoutI:
+          for j in i:
+              for k in j:
+                  list_de_AjoutIList.append(k)
+      print("I_IDSA:",len(list_de_AjoutIList))
+      
+      
+      list_de_IDGC=[]
+      for u in IDGCl:
+          for v in u:
+              for x in v:
+                  #print(x)
+                  list_de_IDGC.append(x)
+      print("I_IDGC:",len(list_de_IDGC))
+
+
+      list_de_AjoutEList=[]
+      for i in AjoutEN:
+          for j in i:
+                  list_de_AjoutEList.append(j)
+      print("I_Ajout:",len(list_de_AjoutEList))
+
+            compteIDGC=0
+      for i in range(len(list_de_clusterList)):
+          for j in range(len(list_de_IDGC)):
+              if (i==j and list_de_clusterList[i]!=list_de_IDGC[j]):
+                  compteIDGC=compteIDGC +1
+      #print(len(list_de_IDGC))
+      print("Im_IDGC:",compteIDGC)
+
+      compteE=0
+      for i in range(len(list_de_clusterList)):
+          for j in range(len(list_de_AjoutEList)):
+              if (i==j and list_de_clusterList[i]!=list_de_AjoutEList[j]):
+                  compteE=compteE +1
+      print("Im_Ajout:",compteE)
+
+      compter=0
+      for i in range(len(list_de_clusterList)):
+          for j in range(len(list_de_AjoutIList)):
+              if (i==j and list_de_clusterList[i]!=list_de_AjoutIList[j]):
+                  compter=compter +1
+      print("Im_IDSA:",compter)
 
       # In[ ]:
 
