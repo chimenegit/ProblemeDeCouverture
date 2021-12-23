@@ -831,7 +831,7 @@ finally:
                   list_de_AjoutEList.append(j)
       print("I_Ajout:",len(list_de_AjoutEList))
 
-            compteIDGC=0
+      compteIDGC=0
       for i in range(len(list_de_clusterList)):
           for j in range(len(list_de_IDGC)):
               if (i==j and list_de_clusterList[i]!=list_de_IDGC[j]):
