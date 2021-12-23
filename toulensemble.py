@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[30001:50000] # head(30000)#
+dh=df.loc[30001:40000] # head(30000)#
 data=dh.values.tolist()
 
 data_int=[]
@@ -324,7 +324,7 @@ finally:
               return(pd.DataFrame(chunk))
 
       # On suppose que l'Algorithme de construction de Tremain effectué
-      k=2 # VARIATION DE K
+      k=3 # VARIATION DE K
       cluster_list= []
       for liste in data_partition_horizontale:
 
