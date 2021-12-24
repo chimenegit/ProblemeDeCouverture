@@ -324,7 +324,7 @@ finally:
               return(pd.DataFrame(chunk))
 
       # On suppose que l'Algorithme de construction de Tremain effectué
-      k=3 # VARIATION DE K
+      k=4 # VARIATION DE K
       cluster_list= []
       for liste in data_partition_horizontale:
 
@@ -792,7 +792,7 @@ finally:
           #if len(t)!=0:
               compt_IDSA=compt_IDSA+1
       print("Nbre_de_bloc_Non couvert_IDSA:",compt_IDSA)
-
+      print(k)
 
       # In[ ]:
 
