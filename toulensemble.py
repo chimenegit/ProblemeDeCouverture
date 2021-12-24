@@ -837,20 +837,20 @@ finally:
               if (i==j and list_de_clusterList[i]!=list_de_IDGC[j]):
                   compteIDGC=compteIDGC +1
       #print(len(list_de_IDGC))
-      #print("Im_IDGC:",compteIDGC)
+      print("Im_IDGC:",compteIDGC)
 
       compteE=0
       for i in range(len(list_de_clusterList)):
           for j in range(len(list_de_AjoutEList)):
               if (i==j and list_de_clusterList[i]!=list_de_AjoutEList[j]):
                   compteE=compteE +1
-      #print("Im_Ajout:",compteE)
+      print("Im_Ajout:",compteE)
 
       compter=0
       for i in range(len(list_de_clusterList)):
           for j in range(len(list_de_AjoutIList)):
               if (i==j and list_de_clusterList[i]!=list_de_AjoutIList[j]):
                   compter=compter +1
-      #print("Im_IDSA:",compter)
+      print("Im_IDSA:",compter)
 
      
