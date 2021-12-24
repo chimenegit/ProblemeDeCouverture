@@ -837,21 +837,110 @@ finally:
               if (i==j and list_de_clusterList[i]!=list_de_IDGC[j]):
                   compteIDGC=compteIDGC +1
       #print(len(list_de_IDGC))
-      print("Im_IDGC:",compteIDGC)
+      #print("Im_IDGC:",compteIDGC)
 
       compteE=0
       for i in range(len(list_de_clusterList)):
           for j in range(len(list_de_AjoutEList)):
               if (i==j and list_de_clusterList[i]!=list_de_AjoutEList[j]):
                   compteE=compteE +1
-      print("Im_Ajout:",compteE)
+      #print("Im_Ajout:",compteE)
 
       compter=0
       for i in range(len(list_de_clusterList)):
           for j in range(len(list_de_AjoutIList)):
               if (i==j and list_de_clusterList[i]!=list_de_AjoutIList[j]):
                   compter=compter +1
-      print("Im_IDSA:",compter)
+      #print("Im_IDSA:",compter)
+
+      # CODES POUR LE CALCUL DE RAE
+
+      # Dissociation de base pour RAE
+      liste3=[]   
+      for p in range(len(list_de_clusterList)):
+          for q in range(len(list_de_clusterList[p])):
+              liste3.append(list_de_clusterList[p][q])
+      List_Di=liste3
+
+      list_coupDi=[]
+      for e in range(len(List_Di) - 1):
+          for f in range(e+1, len(List_Di)):
+                      list_coupDi.append(set([List_Di[e], List_Di[f]]))
+  
+# RAE_Ajout
+      liste4_jou=[]   
+      for r in range(len(list_de_AjoutEList)):
+          for s in range(len(list_de_AjoutEList[r])):
+              liste4_jou.append(list_de_AjoutEList[r][s])
+      List_datJou=liste4_jou
+
+      list_coupledatJou=[]
+      for n in range(len(List_datJou) - 1):
+          for o in range(n+1, len(List_datJou)):
+                      list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
+
+      Couple_Essai={12703, 10315}
+      compteDi=list_coupDi.count(Couple_Essai)
+      compteJou=list_coupledatJou.count(Couple_Essai)
+      print(compteDi, compteJou)
+
+      import statistics
+      support=[compteDi,compteJou]
+      moyenne=statistics.mean(support)
+      re=abs(support[1]-support[0])/moyenne
+      print("re_Ajout:",re)
+
+
+      # RAE_IDSA
+
+      liste4_IDSA=[]   
+      for r in range(len(list_de_AjoutIList)):
+          for s in range(len(list_de_AjoutIList[r])):
+              liste4_IDSA.append(list_de_AjoutIList[r][s])
+      List_datIDSA=liste4_IDSA
+
+      list_coupledatIDSA=[]
+      for n in range(len(List_datIDSA) - 1):
+          for o in range(n+1, len(List_datIDSA)):
+                      list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
+
+
+      Couple_Essai={12703, 10315}
+      compteDi=list_coupDi.count(Couple_Essai)
+      compteIDSA=list_coupledatIDSA.count(Couple_Essai)
+      print(compteDi, compteIDSA)
+
+      #import statistics
+      support=[compteDi,compteIDSA]
+      moyenne=statistics.mean(support)
+      re=abs(support[1]-support[0])/moyenne
+      print("re_IDSA:",re)
+   
+      # RAE_IDGC
+      liste4=[]   
+      for r in range(len(list_de_IDGC)):
+          for s in range(len(list_de_IDGC[r])):
+              liste4.append(list_de_IDGC[r][s])
+      List_dat=liste4
+
+
+      list_coupleIDGC=[]
+      for n in range(len(List_dat) - 1):
+          for o in range(n+1, len(List_dat)):
+                      list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
+
+      Couple_Essai={12703, 10315}
+      compteDi=list_coupDi.count(Couple_Essai)
+      compteIDGC=list_coupleIDGC.count(Couple_Essai)
+      print(compteIDGC, compteDi)
+
+      import statistics
+      support=[compteDi,compteIDGC]
+      moyenne=statistics.mean(support)
+      re=abs(support[1]-support[0])/moyenne
+      print("re_IDGC:",re)
+
+
 
       # In[ ]:
 
