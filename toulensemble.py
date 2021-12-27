@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.head(5000)#loc[45001:50000] # 
+dh=df.head(5000)# loc[5001:15000] # 
 data=dh.values.tolist()
 
 data_int=[]
@@ -151,7 +151,7 @@ def Horpat(D, ignore):
 
 # LA MAXIMALE DE CLUSTER CONSIDEREE
 
-MAX_CLUSTER_SIZE=20
+MAX_CLUSTER_SIZE=10
 
 ignore_set = set([])
 #data=dh.values.tolist()
