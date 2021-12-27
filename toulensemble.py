@@ -882,7 +882,7 @@ finally:
       Couple_Essai={55267, 55271}
       compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
-      print(compteDi, compteJou)
+      #print(compteDi, compteJou)
 
       import statistics
       support=[compteDi,compteJou]
@@ -905,10 +905,10 @@ finally:
                       list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
 
 
-      Couple_Essai={12703, 10315}
-      compteDi=list_coupDi.count(Couple_Essai)
+      #Couple_Essai={12703, 10315}
+      #compteDi=list_coupDi.count(Couple_Essai)
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
-      print(compteDi, compteIDSA)
+      #print(compteDi, compteIDSA)
 
       #import statistics
       support=[compteDi,compteIDSA]
@@ -929,10 +929,10 @@ finally:
           for o in range(n+1, len(List_dat)):
                       list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
 
-      Couple_Essai={12703, 10315}
-      compteDi=list_coupDi.count(Couple_Essai)
+      #Couple_Essai={12703, 10315}
+      #compteDi=list_coupDi.count(Couple_Essai)
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
-      print(compteIDGC, compteDi)
+      #print(compteDi, compteIDGC)
 
       import statistics
       support=[compteDi,compteIDGC]
