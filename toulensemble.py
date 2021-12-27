@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[45001:50000] # head(30000)#
+dh=df.head(5000)#loc[45001:50000] # 
 data=dh.values.tolist()
 
 data_int=[]
@@ -813,7 +813,7 @@ finally:
           for j in i:
               for k in j:
                   list_de_AjoutIList.append(k)
-      print("I_IDSA:",len(list_de_AjoutIList))
+      #print("I_IDSA:",len(list_de_AjoutIList))
       
       
       list_de_IDGC=[]
@@ -822,7 +822,7 @@ finally:
               for x in v:
                   #print(x)
                   list_de_IDGC.append(x)
-      print("I_IDGC:",len(list_de_IDGC))
+      #print("I_IDGC:",len(list_de_IDGC))
 
 
       list_de_AjoutEList=[]
@@ -837,21 +837,21 @@ finally:
               if (i==j and list_de_clusterList[i]!=list_de_IDGC[j]):
                   compteIDGC=compteIDGC +1
       #print(len(list_de_IDGC))
-      print("Im_IDGC:",compteIDGC)
+      #print("Im_IDGC:",compteIDGC)
 
       compteE=0
       for i in range(len(list_de_clusterList)):
           for j in range(len(list_de_AjoutEList)):
               if (i==j and list_de_clusterList[i]!=list_de_AjoutEList[j]):
                   compteE=compteE +1
-      print("Im_Ajout:",compteE)
+      #print("Im_Ajout:",compteE)
 
       compter=0
       for i in range(len(list_de_clusterList)):
           for j in range(len(list_de_AjoutIList)):
               if (i==j and list_de_clusterList[i]!=list_de_AjoutIList[j]):
                   compter=compter +1
-      print("Im_IDSA:",compter)
+      #print("Im_IDSA:",compter)
 
          # CODES POUR LE CALCUL DE RAE
 
