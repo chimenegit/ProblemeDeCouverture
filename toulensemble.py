@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.head(5000)# loc[5001:15000] # 
+dh=df.loc[8001:15000] # head(5000)# 
 data=dh.values.tolist()
 
 data_int=[]
@@ -521,27 +521,27 @@ finally:
                           Disassociated_data=tempList    
                           trouve=True
                           break
-              #if trouve==False:
+              if trouve==False:
 
-                  #Disassociated_data.append(eltcouv)
+                  Disassociated_data.append(eltcouv)
 
           if len(eltcouv)>=2:
 
 
-                  #if len(ListNonCouv)==0:
-                      #if set(eltcouv)!=set(enscouv):
-                          #liste.append(eltcouv)
-                      #else:
+                  if len(ListNonCouv)==0:
+                      if set(eltcouv)!=set(enscouv):
+                          liste.append(eltcouv)
+                      else:
 
-                               #liste.append(e1)
-                               #liste.append(e2)
+                               liste.append(e1)
+                               liste.append(e2)
 
                   if len(ListNonCouv)==1:  
                       for i in range(0, len(liste)):
                           if set(liste[i])==set(ListNonCouv[0]):
 
                               liste[i].extend(e1)
-                              #liste.append(e2)
+                              liste.append(e2)
 
                   if len(ListNonCouv)>=2:
                       trouve2=False
@@ -905,7 +905,7 @@ finally:
                       list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
 
 
-      #Couple_Essai={12703, 10315}
+      #Couple_Essai={55271, 222311}
       #compteDi=list_coupDi.count(Couple_Essai)
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
       #print(compteDi, compteIDSA)
