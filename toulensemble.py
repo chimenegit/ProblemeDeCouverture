@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[10001:15000] # head(5000)# 
+dh=df.loc[5001:10000] # head(5000)# 
 data=dh.values.tolist()
 
 data_int=[]
@@ -151,7 +151,7 @@ def Horpat(D, ignore):
 
 # LA MAXIMALE DE CLUSTER CONSIDEREE
 
-MAX_CLUSTER_SIZE=40
+MAX_CLUSTER_SIZE=50
 
 ignore_set = set([])
 #data=dh.values.tolist()
@@ -324,7 +324,7 @@ finally:
               return(pd.DataFrame(chunk))
 
       # On suppose que l'Algorithme de construction de Tremain effectué
-      k=2 # VARIATION DE K
+      k=5 # VARIATION DE K
       cluster_list= []
       for liste in data_partition_horizontale:
 
@@ -879,7 +879,7 @@ finally:
           for o in range(n+1, len(List_datJou)):
                       list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
 
-      Couple_Essai={35185, 12339}
+      Couple_Essai={12759, 10307}
       compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
       #print(compteDi, compteJou)
