@@ -938,6 +938,3 @@ finally:
       moyenne=statistics.mean(support)
       re=abs(support[1]-support[0])/moyenne
       print("re_IDGC:",re)
-
-
- 
