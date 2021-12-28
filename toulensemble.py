@@ -879,7 +879,7 @@ finally:
       for n in range(len(List_dat) - 1):
           for o in range(n+1, len(List_dat)):
                       list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
-
+      Couple_Essai={55267, 55271}
       #Couple_Essai={12703, 10315}
       #compteDi=list_coupDi.count(Couple_Essai)
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
