@@ -151,7 +151,7 @@ def Horpat(D, ignore):
 
 # LA MAXIMALE DE CLUSTER CONSIDEREE
 
-MAX_CLUSTER_SIZE=50
+MAX_CLUSTER_SIZE=40
 
 ignore_set = set([])
 #data=dh.values.tolist()
@@ -830,6 +830,8 @@ finally:
           for j in i:
                   list_de_AjoutEList.append(j)
       print("I_Ajout:",len(list_de_AjoutEList))
+      print(MAX_CLUSTER_SIZE)
+      
 
       compteIDGC=0
       for i in range(len(list_de_clusterList)):
@@ -905,7 +907,7 @@ finally:
                       list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
 
 
-      #Couple_Essai={55271, 222311}
+      #Couple_Essai={253633, 55267}
       #compteDi=list_coupDi.count(Couple_Essai)
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
       #print(compteDi, compteIDSA)
