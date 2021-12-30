@@ -868,55 +868,7 @@ finally:
       for e in range(len(List_Di) - 1):
           for f in range(e+1, len(List_Di)):
                       list_coupDi.append(set([List_Di[e], List_Di[f]]))
-                  
-      #RAE_Ajout
-      liste4_jou=[]   
-      for r in range(len(list_de_AjoutEList)):
-          for s in range(len(list_de_AjoutEList[r])):
-              liste4_jou.append(list_de_AjoutEList[r][s])
-      List_datJou=liste4_jou
-
-      list_coupledatJou=[]
-      for n in range(len(List_datJou) - 1):
-          for o in range(n+1, len(List_datJou)):
-                      list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
-
-      Couple_Essai={253633, 55267}
-      compteDi=list_coupDi.count(Couple_Essai)
-      compteJou=list_coupledatJou.count(Couple_Essai)
-      #print(compteDi, compteJou)
-
-      import statistics
-      support=[compteDi,compteJou]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      print("re_Ajout:",re)
-
-
-      # RAE_IDSA
-
-      liste4_IDSA=[]   
-      for r in range(len(list_de_AjoutIList)):
-          for s in range(len(list_de_AjoutIList[r])):
-              liste4_IDSA.append(list_de_AjoutIList[r][s])
-      List_datIDSA=liste4_IDSA
-
-      list_coupledatIDSA=[]
-      for n in range(len(List_datIDSA) - 1):
-          for o in range(n+1, len(List_datIDSA)):
-                      list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
-
-
-      #Couple_Essai={253633, 55267}
-      #compteDi=list_coupDi.count(Couple_Essai)
-      compteIDSA=list_coupledatIDSA.count(Couple_Essai)
-      #print(compteDi, compteIDSA)
-
-      #import statistics
-      support=[compteDi,compteIDSA]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      print("re_IDSA:",re)
+    
    
       # RAE_IDGC
       liste4=[]   
@@ -930,8 +882,9 @@ finally:
       for n in range(len(List_dat) - 1):
           for o in range(n+1, len(List_dat)):
                       list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
-      #Couple_Essai={55267, 55271}
-     # compteDi=list_coupDi.count(Couple_Essai)
+                  
+      Couple_Essai={253633, 55267}
+      compteDi=list_coupDi.count(Couple_Essai)
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
       #print(compteDi, compteIDGC)
 
