@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.head(5000)# loc[55001:60000] # 
+dh=df.loc[5001:10000] #head(5000)#  
 data=dh.values.tolist()
 
 data_int=[]
