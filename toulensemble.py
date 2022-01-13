@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[55001:60000] # head(5000)# 
+dh=df.head(5000)# loc[55001:60000] # 
 data=dh.values.tolist()
 
 data_int=[]
@@ -151,7 +151,7 @@ def Horpat(D, ignore):
 
 # LA MAXIMALE DE CLUSTER CONSIDEREE
 
-MAX_CLUSTER_SIZE=10
+MAX_CLUSTER_SIZE=50
 
 ignore_set = set([])
 #data=dh.values.tolist()
@@ -881,16 +881,16 @@ finally:
           for o in range(n+1, len(List_datJou)):
                       list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
 
-      Couple_Essai={253633, 55267}
+      Couple_Essai={55267, 55271}
       compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
-      #print(compteDi, compteJou)
+      print("Compt_Ajout:",compteDi, compteJou)
 
       import statistics
       support=[compteDi,compteJou]
       moyenne=statistics.mean(support)
       re=abs(support[1]-support[0])/moyenne
-      print("re_Ajout:",re)
+      #print("re_Ajout:",re)
 
 
       # RAE_IDSA
@@ -910,13 +910,13 @@ finally:
       #Couple_Essai={253633, 55267}
       #compteDi=list_coupDi.count(Couple_Essai)
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
-      #print(compteDi, compteIDSA)
+      print("Compt_IDSA:",compteDi, compteIDSA)
 
       #import statistics
       support=[compteDi,compteIDSA]
       moyenne=statistics.mean(support)
       re=abs(support[1]-support[0])/moyenne
-      print("re_IDSA:",re)
+      #print("re_IDSA:",re)
    
       # RAE_IDGC
       liste4=[]   
@@ -934,10 +934,10 @@ finally:
       #Couple_Essai={253633, 55267}
       #compteDi=list_coupDi.count(Couple_Essai)
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
-      #print(compteDi, compteIDGC)
+      print("Compt_IDGC:",compteDi, compteIDGC)
 
       import statistics
       support=[compteDi,compteIDGC]
       moyenne=statistics.mean(support)
       re=abs(support[1]-support[0])/moyenne
-      print("re_IDGC:",re)
+      #print("re_IDGC:",re)
