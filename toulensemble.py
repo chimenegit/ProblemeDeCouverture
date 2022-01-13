@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[25001:30000] #head(5000)#  
+dh=df.loc[30001:35000] #head(5000)#  
 data=dh.values.tolist()
 
 data_int=[]
@@ -931,7 +931,7 @@ finally:
           for o in range(n+1, len(List_dat)):
                       list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
                   
-      #Couple_Essai={253633, 55267}
+      #Couple_Essai={55267, 55271}
       #compteDi=list_coupDi.count(Couple_Essai)
       compteIDGC=list_coupleIDGC.count(Couple_Essai)
       print("Compt_IDGC:",compteDi, compteIDGC)
