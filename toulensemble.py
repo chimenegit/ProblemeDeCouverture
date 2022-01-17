@@ -881,7 +881,7 @@ finally:
           for o in range(n+1, len(List_datJou)):
                       list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
 
-      Couple_Essai={55755, 222639}
+      Couple_Essai={244119, 55267}
       compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
       print("Compt_Ajout:",compteDi, compteJou)
