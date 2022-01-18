@@ -44,7 +44,7 @@ df=df.fillna(0)
 
 # LA TAILLE DE DONNEES CONSIDEREES
 
-dh=df.loc[55001:60000]  # head(5000)#
+dh=df.loc[50001:55000]  # head(5000)#
 data=dh.values.tolist()
 
 data_int=[]
@@ -881,7 +881,7 @@ finally:
           for o in range(n+1, len(List_datJou)):
                       list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
 
-      Couple_Essai={253633, 55267}
+      Couple_Essai={250271, 253633}
       compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
       print("Compt_Ajout:",compteDi, compteJou)
