@@ -704,89 +704,89 @@ finally:
           return(Disassociated_data)
 
 
-    def SupprEltN(Disassociated_data, k): # Algo ajoutant l(es) élément(s) couvert(s) // fait avec ATTA
-   
-    liste=Disassociated_data
-    #liste=Disassociated_data
-    enscouv=RenvoiEnsCouvert(liste)
-    eltcouv=RenvoiEltCouvert(liste)
+      def SupprEltN(Disassociated_data, k): # Algo ajoutant l(es) élément(s) couvert(s) // fait avec ATTA
 
-    e1=eltcouv[0:(len(eltcouv)//2)]
-    e2=eltcouv[(len(eltcouv)//2):len(eltcouv)]
-    ListNonCouv=ListNonCouv1(liste) 
-    Compt=Compt_list_couv(liste)
-    #kmAnonnymat=is_kmAnonnymat(liste,k)
-    if len(eltcouv)!=0:
-            #print("eltcouv", eltcouv)
-            #print(Compt)
-            if Compt>k: 
-               # if set(eltcouv)==set(enscouv):   
-                   # if len(ListNonCouv)==0:
-                       # liste.append(e1)
-                       # liste.append(e2)
+      liste=Disassociated_data
+      #liste=Disassociated_data
+      enscouv=RenvoiEnsCouvert(liste)
+      eltcouv=RenvoiEltCouvert(liste)
 
-                    if len(ListNonCouv)==1:  
-                        for i in range(0, len(liste)):
-                            if set(liste[i])==set(ListNonCouv[0]):
+      e1=eltcouv[0:(len(eltcouv)//2)]
+      e2=eltcouv[(len(eltcouv)//2):len(eltcouv)]
+      ListNonCouv=ListNonCouv1(liste) 
+      Compt=Compt_list_couv(liste)
+      #kmAnonnymat=is_kmAnonnymat(liste,k)
+      if len(eltcouv)!=0:
+               #print("eltcouv", eltcouv)
+               #print(Compt)
+               if Compt>k: 
+                  # if set(eltcouv)==set(enscouv):   
+                      # if len(ListNonCouv)==0:
+                          # liste.append(e1)
+                          # liste.append(e2)
 
-                                liste[i].extend(e1)
-                               # liste.append(e2)
-                   
-                #else:                        
-                    trouve=False
-                    for i in range(0, len(liste)):
-                        if set(liste[i])==set(enscouv): 
-                            for j in range(len(liste[i])):
-                                if liste[i][j]!= eltcouv[-1]:
-                                    liste[i].remove(liste[i][j])
-                                    trouve=True
-                                    break
-                        if trouve:
-                            break
-            else:  
-                    trouve=False
-                    for i in range(len(liste)):
+                       if len(ListNonCouv)==1:  
+                           for i in range(0, len(liste)):
+                               if set(liste[i])==set(ListNonCouv[0]):
 
-                        if set(liste[i])!=set(enscouv):
-                            tempList_i=copy.deepcopy(liste[i])
-                            tempList_i.extend(eltcouv)
-                            tempList=copy.deepcopy(liste)
-                            tempList[i]=tempList_i
-                            if set(tempList[i])!=set(enscouv):
-                                Disassociated_data=tempList    
-                                trouve=True
-                                break
-                    if trouve==False:
-                        #if len(eltcouv)==1: 
-                            #Disassociated_data.append(eltcouv)
+                                   liste[i].extend(e1)
+                                  # liste.append(e2)
 
-                        if len(eltcouv)>=2:
+                   #else:                        
+                       trouve=False
+                       for i in range(0, len(liste)):
+                           if set(liste[i])==set(enscouv): 
+                               for j in range(len(liste[i])):
+                                   if liste[i][j]!= eltcouv[-1]:
+                                       liste[i].remove(liste[i][j])
+                                       trouve=True
+                                       break
+                           if trouve:
+                               break
+               else:  
+                       trouve=False
+                       for i in range(len(liste)):
 
-                            #if len(ListNonCouv)==0:
-                                 #liste.append(e1)
-                                 #liste.append(e2)
+                           if set(liste[i])!=set(enscouv):
+                               tempList_i=copy.deepcopy(liste[i])
+                               tempList_i.extend(eltcouv)
+                               tempList=copy.deepcopy(liste)
+                               tempList[i]=tempList_i
+                               if set(tempList[i])!=set(enscouv):
+                                   Disassociated_data=tempList    
+                                   trouve=True
+                                   break
+                       if trouve==False:
+                           #if len(eltcouv)==1: 
+                               #Disassociated_data.append(eltcouv)
 
-                            if len(ListNonCouv)==1:  
-                                for i in range(0, len(liste)):
-                                    if set(liste[i])==set(ListNonCouv[0]):
+                           if len(eltcouv)>=2:
 
-                                        liste[i].extend(e1)
-                                        #liste.append(e2)
+                               #if len(ListNonCouv)==0:
+                                    #liste.append(e1)
+                                    #liste.append(e2)
 
-                            if len(ListNonCouv)>=2:
-                                    e1trouve= False
-                                    e2trouve= False
-                                    for i in range(0, len(liste)):
-                                        if set(liste[i])==set(ListNonCouv[0]):
-                                            liste[i].extend(e1)
-                                            e1trouve= True
-                                        elif set(liste[i])==set(ListNonCouv[1]):
-                                            liste[i].extend(e2)
-                                            e2trouve= True
-                                            break
+                               if len(ListNonCouv)==1:  
+                                   for i in range(0, len(liste)):
+                                       if set(liste[i])==set(ListNonCouv[0]):
+
+                                           liste[i].extend(e1)
+                                           #liste.append(e2)
+
+                               if len(ListNonCouv)>=2:
+                                       e1trouve= False
+                                       e2trouve= False
+                                       for i in range(0, len(liste)):
+                                           if set(liste[i])==set(ListNonCouv[0]):
+                                               liste[i].extend(e1)
+                                               e1trouve= True
+                                           elif set(liste[i])==set(ListNonCouv[1]):
+                                               liste[i].extend(e2)
+                                               e2trouve= True
+                                               break
 
 
-    return(Disassociated_data)
+       return(Disassociated_data)
 
 
       # In[ ]:
