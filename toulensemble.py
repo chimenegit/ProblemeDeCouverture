@@ -618,7 +618,7 @@ finally:
           enscouv= RenvoiEnsCouvert(liste)
           compt=0
           for i in liste:
-              if i==enscouv:
+              if set(i)==set(enscouv):
                   compt=compt+1
           return(compt)
 
@@ -643,7 +643,7 @@ finally:
                   if Compt>k: 
                       trouve=False
                       for i in range(0, len(liste)):
-                          if liste[i]==enscouv: 
+                          if set(liste[i])==set(enscouv): 
                               for j in range(len(liste[i])):
                                   if liste[i][j]!= eltcouv[-1]:
                                       liste[i].remove(liste[i][j])
@@ -704,8 +704,89 @@ finally:
           return(Disassociated_data)
 
 
-      #datasFonction=IDSA3(datas, 3)
+    def SupprEltN(Disassociated_data, k): # Algo ajoutant l(es) élément(s) couvert(s) // fait avec ATTA
+   
+    liste=Disassociated_data
+    #liste=Disassociated_data
+    enscouv=RenvoiEnsCouvert(liste)
+    eltcouv=RenvoiEltCouvert(liste)
 
+    e1=eltcouv[0:(len(eltcouv)//2)]
+    e2=eltcouv[(len(eltcouv)//2):len(eltcouv)]
+    ListNonCouv=ListNonCouv1(liste) 
+    Compt=Compt_list_couv(liste)
+    #kmAnonnymat=is_kmAnonnymat(liste,k)
+    if len(eltcouv)!=0:
+            #print("eltcouv", eltcouv)
+            #print(Compt)
+            if Compt>k: 
+               # if set(eltcouv)==set(enscouv):   
+                   # if len(ListNonCouv)==0:
+                       # liste.append(e1)
+                       # liste.append(e2)
+
+                    if len(ListNonCouv)==1:  
+                        for i in range(0, len(liste)):
+                            if set(liste[i])==set(ListNonCouv[0]):
+
+                                liste[i].extend(e1)
+                               # liste.append(e2)
+                   
+                #else:                        
+                    trouve=False
+                    for i in range(0, len(liste)):
+                        if set(liste[i])==set(enscouv): 
+                            for j in range(len(liste[i])):
+                                if liste[i][j]!= eltcouv[-1]:
+                                    liste[i].remove(liste[i][j])
+                                    trouve=True
+                                    break
+                        if trouve:
+                            break
+            else:  
+                    trouve=False
+                    for i in range(len(liste)):
+
+                        if set(liste[i])!=set(enscouv):
+                            tempList_i=copy.deepcopy(liste[i])
+                            tempList_i.extend(eltcouv)
+                            tempList=copy.deepcopy(liste)
+                            tempList[i]=tempList_i
+                            if set(tempList[i])!=set(enscouv):
+                                Disassociated_data=tempList    
+                                trouve=True
+                                break
+                    if trouve==False:
+                        #if len(eltcouv)==1: 
+                            #Disassociated_data.append(eltcouv)
+
+                        if len(eltcouv)>=2:
+
+                            #if len(ListNonCouv)==0:
+                                 #liste.append(e1)
+                                 #liste.append(e2)
+
+                            if len(ListNonCouv)==1:  
+                                for i in range(0, len(liste)):
+                                    if set(liste[i])==set(ListNonCouv[0]):
+
+                                        liste[i].extend(e1)
+                                        #liste.append(e2)
+
+                            if len(ListNonCouv)>=2:
+                                    e1trouve= False
+                                    e2trouve= False
+                                    for i in range(0, len(liste)):
+                                        if set(liste[i])==set(ListNonCouv[0]):
+                                            liste[i].extend(e1)
+                                            e1trouve= True
+                                        elif set(liste[i])==set(ListNonCouv[1]):
+                                            liste[i].extend(e2)
+                                            e2trouve= True
+                                            break
+
+
+    return(Disassociated_data)
 
 
       # In[ ]:
@@ -716,6 +797,7 @@ finally:
       cluster_list_Ajout=copy.deepcopy(cluster_list)
       cluster_lis=copy.deepcopy(cluster_list)
       cluster_list_Disso=copy.deepcopy(cluster_list)
+      cluster_list_Suppr=copy.deepcopy(cluster_list)
 
       IDGCl=IDGC(cluster_lis)
       import time
@@ -735,6 +817,13 @@ finally:
               AjoutI.append(AjoutI_bloc)
       #print("\n\nTemps d execution : %s secondes ---" % (time.time() - start_time))
       #print(AjoutI)
+      
+      SupprEN=[]
+
+      for cluster in cluster_list_Suppr:
+            for bloc in cluster:
+                SupprEN.append(SupprEltN(bloc, k))
+      #print(SupprEN)
 
 
       #NOMBRE DE BLOCS COUVERTS ET LISTE DES TERMES AJOUT, IDGC, IDSA
@@ -763,7 +852,7 @@ finally:
       for a in clust_couvIDGC:
           if len(a)!=0:
               compt1_IDGC=compt1_IDGC+1
-      print("Nbre_de_bloc_Non couvert_IDGC :",compt1_IDGC)
+      #print("Nbre_de_bloc_Non couvert_IDGC :",compt1_IDGC)
 
 
       Elt_couvAjout=[]
@@ -792,6 +881,21 @@ finally:
           #if len(t)!=0:
               compt_IDSA=compt_IDSA+1
       print("Nbre_de_bloc_Non couvert_IDSA:",compt_IDSA)
+      
+      Elt_couvSuppr=[]
+      for d in SupprEN:
+          Elt=RenvoiEltCouvert(d)
+          if len(Elt)!=0:
+              Elt_couvSuppr.append(Elt)
+      #print(Elt_couvSuppr)
+
+      compt_Suppr=0
+      for t in Elt_couvSuppr:
+          #print(t)
+          if len(t)!=0:
+              compt_Suppr=compt_Suppr+1
+      print("Nbre_de_bloc_Non couvert_Suppr:",compt_Suppr) 
+      
       print(k)
 
       # In[ ]:
@@ -829,7 +933,13 @@ finally:
       for i in AjoutEN:
           for j in i:
                   list_de_AjoutEList.append(j)
-      print("I_Ajout:",len(list_de_AjoutEList))
+      #print("I_Ajout:",len(list_de_AjoutEList))
+      
+      list_de_SupprEList=[]
+      for i in SupprEN:
+          for j in i:
+                  list_de_SupprEList.append(j)
+      #print("I_Suppr:",len(list_de_SupprEList))
       print(MAX_CLUSTER_SIZE)
       
 
@@ -869,6 +979,30 @@ finally:
           for f in range(e+1, len(List_Di)):
                       list_coupDi.append(set([List_Di[e], List_Di[f]]))
                   
+      #RAE_Suppr
+      liste4_Suppr=[]   
+      for r in range(len(list_de_SupprEList)):
+          for s in range(len(list_de_SupprEList[r])):
+              liste4_Suppr.append(list_de_SupprEList[r][s])
+      List_Suppr=liste4_Suppr
+
+      list_coupleSuppr=[]
+      for n in range(len(List_Suppr) - 1):
+          for o in range(n+1, len(List_Suppr)):
+                      list_coupleSuppr.append(set([List_Suppr[n], List_Suppr[o]]))
+
+      Couple_Essai={55267, 55335}
+      compteDi=list_coupDi.count(Couple_Essai)
+      compteSuppr=list_coupleSuppr.count(Couple_Essai)
+      print("Compt_Suppr:",compteDi, compteSuppr)
+
+      import statistics
+      support=[compteDi,compteSuppr]
+      moyenne=statistics.mean(support)
+      re=abs(support[1]-support[0])/moyenne
+      #print("re_Suppr:",re)
+
+                  
       #RAE_Ajout
       liste4_jou=[]   
       for r in range(len(list_de_AjoutEList)):
@@ -881,8 +1015,8 @@ finally:
           for o in range(n+1, len(List_datJou)):
                       list_coupledatJou.append(set([List_datJou[n], List_datJou[o]]))
 
-      Couple_Essai={55267, 55335}
-      compteDi=list_coupDi.count(Couple_Essai)
+      #Couple_Essai={55267, 55335}
+      #compteDi=list_coupDi.count(Couple_Essai)
       compteJou=list_coupledatJou.count(Couple_Essai)
       print("Compt_Ajout:",compteDi, compteJou)
 
@@ -906,7 +1040,6 @@ finally:
           for o in range(n+1, len(List_datIDSA)):
                       list_coupledatIDSA.append(set([List_datIDSA[n], List_datIDSA[o]]))
 
-
       #Couple_Essai={253633, 55267}
       #compteDi=list_coupDi.count(Couple_Essai)
       compteIDSA=list_coupledatIDSA.count(Couple_Essai)
@@ -918,26 +1051,4 @@ finally:
       re=abs(support[1]-support[0])/moyenne
       #print("re_IDSA:",re)
    
-      # RAE_IDGC
-      liste4=[]   
-      for r in range(len(list_de_IDGC)):
-          for s in range(len(list_de_IDGC[r])):
-              liste4.append(list_de_IDGC[r][s])
-      List_dat=liste4
-
-
-      list_coupleIDGC=[]
-      for n in range(len(List_dat) - 1):
-          for o in range(n+1, len(List_dat)):
-                      list_coupleIDGC.append(set([List_dat[n], List_dat[o]]))
-                  
-      #Couple_Essai={55267, 222339}
-      #compteDi=list_coupDi.count(Couple_Essai)
-      compteIDGC=list_coupleIDGC.count(Couple_Essai)
-      print("Compt_IDGC:",compteDi, compteIDGC)
-
-      import statistics
-      support=[compteDi,compteIDGC]
-      moyenne=statistics.mean(support)
-      re=abs(support[1]-support[0])/moyenne
-      #print("re_IDGC:",re)
+      
