@@ -705,19 +705,21 @@ finally:
 
 
       def SupprEltN(Disassociated_data, k): # Algo ajoutant l(es) élément(s) couvert(s) // fait avec ATTA
+   
+    
+          liste=Disassociated_data
+          #liste=Disassociated_data
+          enscouv=RenvoiEnsCouvert(liste)
+          eltcouv=RenvoiEltCouvert(liste)
 
-         liste=Disassociated_data
-         #liste=Disassociated_data
-         enscouv=RenvoiEnsCouvert(liste)
-         eltcouv=RenvoiEltCouvert(liste)
-
-         e1=eltcouv[0:(len(eltcouv)//2)]
-         e2=eltcouv[(len(eltcouv)//2):len(eltcouv)]
-         ListNonCouv=ListNonCouv1(liste) 
-         Compt=Compt_list_couv(liste)
-         #kmAnonnymat=is_kmAnonnymat(liste,k)
-         if len(eltcouv)!=0:
-                  
+          e1=eltcouv[0:(len(eltcouv)//2)]
+          e2=eltcouv[(len(eltcouv)//2):len(eltcouv)]
+          ListNonCouv=ListNonCouv1(liste) 
+          Compt=Compt_list_couv(liste)
+          #kmAnonnymat=is_kmAnonnymat(liste,k)
+          if len(eltcouv)!=0:
+                  print("eltcouv", eltcouv)
+                  print(Compt)
                   if Compt>k: 
                       if set(eltcouv)==set(enscouv):   
                           if len(ListNonCouv)==0:
@@ -786,9 +788,7 @@ finally:
 
 
           return(Disassociated_data)
-
-
-      # In[ ]:
+            # In[ ]:
 
 
       #APPEL DES FONCTIONS
