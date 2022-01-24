@@ -990,7 +990,7 @@ finally:
           for o in range(n+1, len(List_Suppr)):
                       list_coupleSuppr.append(set([List_Suppr[n], List_Suppr[o]]))
 
-      Couple_Essai={35185, 12339}
+      Couple_Essai={12339, 10877}
       compteDi=list_coupDi.count(Couple_Essai)
       compteSuppr=list_coupleSuppr.count(Couple_Essai)
       print("Compt_Suppr:",compteDi, compteSuppr)
