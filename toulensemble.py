@@ -704,6 +704,9 @@ finally:
           return(Disassociated_data)
 
 
+      
+      
+      
       def SupprEltN(Disassociated_data, k): # Algo ajoutant l(es) élément(s) couvert(s) // fait avec ATTA
    
     
@@ -718,13 +721,15 @@ finally:
           Compt=Compt_list_couv(liste)
           #kmAnonnymat=is_kmAnonnymat(liste,k)
           if len(eltcouv)!=0:
-                  print("eltcouv", eltcouv)
-                  print(Compt)
+
                   if Compt>k: 
                       if set(eltcouv)==set(enscouv):   
                           if len(ListNonCouv)==0:
+                              for a in e1:
+                                  if a in liste[0]:
+                                      liste[0].remove(a)
+
                               liste.append(e1)
-                              liste.append(e2)
 
                           if len(ListNonCouv)==1:  
                               for i in range(0, len(liste)):
@@ -736,14 +741,21 @@ finally:
                       else:                        
                           trouve=False
                           for i in range(0, len(liste)):
+                              item_del=dict()
                               if set(liste[i])==set(enscouv): 
                                   for j in range(len(liste[i])):
-                                      if liste[i][j]!= eltcouv[-1]:
+                                      if liste[i][j] not in eltcouv:
+                                          item_del = {'index_i':i, 'index_j':j, 'value':copy.deepcopy(liste[i][j])}
+                                          #print(item_del['value'])
                                           liste[i].remove(liste[i][j])
                                           trouve=True
                                           break
                               if trouve:
+                                  #print(item_del)
+                                  liste.append([item_del['value']])
                                   break
+
+
                   else:  
                           trouve=False
                           for i in range(len(liste)):
@@ -775,6 +787,18 @@ finally:
                                               liste.append(e2)
 
                                   if len(ListNonCouv)>=2:
+                                      trouve2=False
+                                      for i in range(len(liste)):
+                                          if set(liste[i])!=set(enscouv):
+                                              tempList_2i=copy.deepcopy(liste[i])
+                                              tempList_2i.extend(eltcouv)
+                                              tempList2=copy.deepcopy(liste)
+                                              tempList2[i]=tempList_2i
+                                              if set(tempList2[i])!=set(enscouv):
+                                                  Disassociated_data=tempList2    
+                                                  trouve2=True
+                                                  break
+                                      if trouve2==False:
                                           e1trouve= False
                                           e2trouve= False
                                           for i in range(0, len(liste)):
@@ -786,8 +810,8 @@ finally:
                                                   e2trouve= True
                                                   break
 
-
           return(Disassociated_data)
+
             # In[ ]:
 
 
